@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.Tasks.TaskItems"
+             Title="Tasks">
+
+    <ListView x:Name="tasksListView" 
+              ItemSelected="OnItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell Height="120">
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0"
+                                        Grid.Column="0" 
+                                     VerticalOptions="Center">
+                            <Label Text="{Binding Title}" 
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding Description}" />
+                        </StackLayout>
+
+                        <Button Text="Edit" 
+                                Grid.Column="1"
+                                Clicked="OnEditClicked"
+                                CommandParameter="{Binding .}"
+                                BackgroundColor="Orange"
+                                TextColor="White"/>
+                        
+                        <Button Text="Delete" 
+                                Grid.Column="2"
+                                Clicked="OnDeleteClicked"
+                                CommandParameter="{Binding .}"
+                                BackgroundColor="Red"
+                                TextColor="White"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

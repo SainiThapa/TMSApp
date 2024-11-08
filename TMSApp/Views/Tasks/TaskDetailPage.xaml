@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Task Details"
+             x:Class="TMSApp.Views.Tasks.TaskDetailPage">
+    <StackLayout Padding="20">
+        <Label Text="Title"
+               FontSize="Medium"
+               FontAttributes="Bold"/>
+        <Label x:Name="titleLabel"
+               FontSize="Small"/>
+
+        <Label Text="Description"
+               FontSize="Medium"
+               FontAttributes="Bold"/>
+        <Label x:Name="descriptionLabel"
+               FontSize="Small"/>
+
+        <Label Text="Due Date"
+               FontSize="Medium"
+               FontAttributes="Bold"/>
+        <Label x:Name="dueDateLabel"
+               FontSize="Small"/>
+
+        <Label Text="Activity Status"
+               FontSize="Medium"
+               FontAttributes="Bold"/>
+        <Label x:Name="statusLabel"
+               FontSize="Small"/>
+
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand"
+                     Margin="0,20,0,0">
+            <Button Text="Back to Task List"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnBackClicked"/>
+            <Button Text="Edit"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnEditClicked"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

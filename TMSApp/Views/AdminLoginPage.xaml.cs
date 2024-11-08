@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TMSApp.Views.Admin;
 
 namespace TMSApp.Views
 {
@@ -17,9 +18,10 @@ namespace TMSApp.Views
             InitializeComponent();
         }
 
-        private void AdminLogin_Clicked(object sender, EventArgs e)
+        private async void AdminLogin_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Login", "Login success", "OK");
+            await Navigation.PushAsync(new AdminHomePage());
+            //DisplayAlert("Login", "Login success", "OK");
         }
     }
 }
