@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.AdminLoginPage"
+             BackgroundColor="AliceBlue"
+             Title="Admin Login">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                <Frame Padding="10" Margin="20" CornerRadius="10" BackgroundColor="White" HasShadow="True">
+                    <StackLayout Spacing="20">
+                        <Label Text="Admin Login"
+                               FontSize="Large"
+                               HorizontalTextAlignment="Center"
+                               FontAttributes="Bold"
+                               TextColor="Coral"/>
+                        <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email" />
+                        <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="True" />
+                        <Button Text="Login" Clicked="AdminLogin_Clicked" BackgroundColor="Coral" TextColor="White" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

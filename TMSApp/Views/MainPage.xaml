@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.MainPage"
+             Title="Welcome to TMS App"
+             BackgroundColor="AliceBlue">
+
+    <!-- Page content -->
+    <StackLayout Spacing="20" Padding="30" VerticalOptions="Center">
+
+        <Label Text="Welcome to TMS App"
+               FontSize="Large"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <Label Text="For further access, you have to register or login"
+               HorizontalOptions="Center"
+               FontAttributes="Italic" />
+
+        <Button Text="Login as a User"
+                HorizontalOptions="FillAndExpand"
+                Clicked="LoginUser_Clicked" 
+                BackgroundColor="Aquamarine"/>
+
+        <Button Text="Login as an Admin"
+                HorizontalOptions="FillAndExpand"
+                Clicked="LoginAdmin_Clicked" 
+                BackgroundColor="Coral"/>
+
+        <Button Text="Register Account"
+                HorizontalOptions="FillAndExpand"
+                Clicked="RegisterAccount_Clicked" 
+                BackgroundColor="GreenYellow"/>
+
+    </StackLayout>
+</ContentPage>

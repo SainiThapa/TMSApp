@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.RegisterAccount"
+             Title="Register New Account"
+             BackgroundColor="AliceBlue">
+    <ScrollView>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+            <Frame Padding="20" Margin="20" CornerRadius="10" BackgroundColor="White" HasShadow="True">
+                <StackLayout Spacing="20">
+                    <Entry x:Name="firstNameEntry" Placeholder="First Name" />
+                    <Entry x:Name="lastNameEntry" Placeholder="Last Name" />
+                    <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email" />
+                    <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="True" />
+                    <Entry x:Name="confirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True" />
+                    <Button Text="Register" Clicked="Button_Register" BackgroundColor="LightGreen" TextColor="White" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

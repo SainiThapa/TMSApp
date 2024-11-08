@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.UserLoginPage"
+             Title="User Login"
+             BackgroundColor="AliceBlue">
+    <ScrollView VerticalOptions="Center" 
+                    HorizontalOptions="FillAndExpand">
+        <StackLayout >
+                <Frame Padding="20" Margin="20" CornerRadius="10" BackgroundColor="White" HasShadow="True">
+                    <StackLayout Spacing="20">
+                    <Label Text="User Login"
+                               FontSize="Large"
+                               HorizontalTextAlignment="Center"
+                               FontAttributes="Bold"
+                               TextColor="#0989ee"/>
+                    <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email" />
+                        <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="True" />
+                    <Button Text="Login" Clicked="Login_Clicked" BackgroundColor="#0989ee" TextColor="White"/>
+                    </StackLayout>
+                </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
