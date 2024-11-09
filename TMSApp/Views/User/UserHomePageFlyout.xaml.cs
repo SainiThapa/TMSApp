@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using TMSApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,33 +25,52 @@ namespace TMSApp.Views.User
             BindingContext = new UserHomePageFlyoutViewModel();
             ListView = MenuItemsListView;
         }
-
-        private class UserHomePageFlyoutViewModel : INotifyPropertyChanged
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            public ObservableCollection<UserHomePageFlyoutMenuItem> MenuItems { get; set; }
-
-            public UserHomePageFlyoutViewModel()
+            try
             {
-                MenuItems = new ObservableCollection<UserHomePageFlyoutMenuItem>(new[]
+                var item = e.SelectedItem as UserHomePageFlyoutMenuItem;
+                if (item == null)
                 {
-                    new UserHomePageFlyoutMenuItem { Id = 0, Title = "Page 1" },
-                    new UserHomePageFlyoutMenuItem { Id = 1, Title = "Page 2" },
-                    new UserHomePageFlyoutMenuItem { Id = 2, Title = "Page 3" },
-                    new UserHomePageFlyoutMenuItem { Id = 3, Title = "Page 4" },
-                    new UserHomePageFlyoutMenuItem { Id = 4, Title = "Page 5" },
-                });
-            }
-
-            #region INotifyPropertyChanged Implementation
-            public event PropertyChangedEventHandler PropertyChanged;
-            void OnPropertyChanged([CallerMemberName] string propertyName = "")
-            {
-                if (PropertyChanged == null)
+                    Debug.WriteLine("Selected item is null");
                     return;
+                }
 
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                if (item.Id == 2)
+                {
+                    Application.Current.MainPage = new NavigationPage(new MainPage()); // Redirect to MainPage
+                }
+                else
+                {
+
+                    Debug.WriteLine("Creating instance of: " + item.TargetType.FullName);
+                    var page = (Page)Activator.CreateInstance(item.TargetType);
+                    if (page == null)
+                    {
+                        Debug.WriteLine("Page instance is null");
+                        return;
+                    }
+
+                    Debug.WriteLine("Navigating to page: " + page.Title);
+                    var mainPage = Application.Current.MainPage as FlyoutPage;
+                    if (mainPage == null)
+                    {
+                        Debug.WriteLine("MainPage is not a FlyoutPage");
+                        return;
+                    }
+
+                    mainPage.Detail = new NavigationPage(page);
+                    mainPage.IsPresented = false;
+                }
             }
-            #endregion
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error in ListView_ItemSelected: " + ex);
+            }
+            finally
+            {
+                ((ListView)sender).SelectedItem = null;  // Deselect the item
+            }
         }
     }
 }

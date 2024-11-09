@@ -16,7 +16,11 @@ namespace TMSApp.Views.Admin
         {
             InitializeComponent();
             FlyoutPage.ListView.ItemSelected += ListView_ItemSelected;
-        }
+    }
+        protected override bool OnBackButtonPressed()
+    {
+        return true; // This overrides the default back button behavior and does nothing instead
+    }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

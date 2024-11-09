@@ -21,6 +21,7 @@ namespace TMSApp.Views
         private async void AdminLogin_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AdminHomePage());
+            Navigation.RemovePage(this);
             //DisplayAlert("Login", "Login success", "OK");
         }
     }

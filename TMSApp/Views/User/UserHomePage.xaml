@@ -2,6 +2,7 @@
 <FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TMSApp.Views.User.UserHomePage"
+             NavigationPage.HasBackButton="False"
              xmlns:pages="clr-namespace:TMSApp.Views.User">
   <FlyoutPage.Flyout>
     <pages:UserHomePageFlyout x:Name="FlyoutPage" />

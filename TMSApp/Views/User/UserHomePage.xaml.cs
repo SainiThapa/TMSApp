@@ -18,19 +18,32 @@ namespace TMSApp.Views.User
             FlyoutPage.ListView.ItemSelected += ListView_ItemSelected;
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
+
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as UserHomePageFlyoutMenuItem;
             if (item == null)
                 return;
+            if (item.Id == 2)
+            {
+                // Implement logout logic
+                Application.Current.MainPage = new NavigationPage(new MainPage());
+                Navigation.RemovePage(this);
+            }
+            else
+            {
+                var page = (Page)Activator.CreateInstance(item.TargetType);
+                page.Title = item.Title;
 
-            var page = (Page)Activator.CreateInstance(item.TargetType);
-            page.Title = item.Title;
-
-            Detail = new NavigationPage(page);
-            IsPresented = false;
-
-            FlyoutPage.ListView.SelectedItem = null;
+                Detail = new NavigationPage(page);
+                IsPresented = false;
+            }
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }

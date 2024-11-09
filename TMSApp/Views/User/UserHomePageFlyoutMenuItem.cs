@@ -8,9 +8,11 @@ namespace TMSApp.Views.User
 {
     public class UserHomePageFlyoutMenuItem
     {
-        public UserHomePageFlyoutMenuItem()
+        public UserHomePageFlyoutMenuItem(Type targetType, int id, string title)
         {
-            TargetType = typeof(UserHomePageFlyoutMenuItem);
+            TargetType = targetType;
+            Id = id;
+            Title = title;
         }
         public int Id { get; set; }
         public string Title { get; set; }
