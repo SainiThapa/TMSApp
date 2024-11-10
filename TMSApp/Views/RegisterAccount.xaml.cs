@@ -1,24 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using TMSApp.ViewModels;
+using System.Threading.Tasks;
+using TMSApp.Services;
+using Xamarin.Essentials;
+using TMSApp.Views.User;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace TMSApp.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterAccount : ContentPage
     {
+        private RegisterViewModel viewModel;
         public RegisterAccount()
         {
             InitializeComponent();
+            viewModel = new RegisterViewModel();
+            BindingContext = viewModel;
         }
 
-        private void Button_Register(object sender, EventArgs e)
+        private async void OnRegisterClicked(object sender, EventArgs e)
         {
-            DisplayAlert("Registration","Successful registration !", "OK");
+            // Check if there are any visible errors
+            if (viewModel.IsEmailErrorVisible || viewModel.IsPasswordErrorVisible
+                || viewModel.IsConfirmPasswordErrorVisible || viewModel.IsNameError)
+            {
+                await DisplayAlert("Error", "Please correct the errors before submitting.", "OK");
+                return;
+            }
+
+            AuthService service = new AuthService();
+            bool isRegistered = await service.RegisterAsync(viewModel.Email, viewModel.Password, viewModel.FirstName, viewModel.LastName);
+
+            if (isRegistered)
+            {
+                await DisplayAlert("Success", "Registration successful!", "OK");
+                var response = await service.LoginAsync(viewModel.Email, viewModel.Password);
+
+                if (response)
+                {
+                    await this.DisplayToastAsync("Login Successful", 1000);
+                    Application.Current.MainPage = new UserHomePage();
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "Registration failed. Please try again.", "OK");
+            }
         }
     }
 }

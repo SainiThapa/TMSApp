@@ -36,7 +36,7 @@ namespace TMSApp.Views.Tasks
             if (task != null)
             {
                 // Handle edit logic or navigate to edit page
-                Navigation.PushAsync(new TaskEditPage());
+                //Navigation.PushAsync(new TaskEditPage());
             }
         }
 

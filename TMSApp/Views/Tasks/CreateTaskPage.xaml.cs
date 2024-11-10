@@ -10,16 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace TMSApp.Views.Tasks
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TaskEditPage : ContentPage
+    public partial class CreateTaskPage : ContentPage
     {
-        public TaskEditPage()
+        public CreateTaskPage()
         {
             InitializeComponent();
-        }
-
-        private async void GoBackClicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
+            BindingContext = new CreateTaskViewModel();
         }
     }
 }

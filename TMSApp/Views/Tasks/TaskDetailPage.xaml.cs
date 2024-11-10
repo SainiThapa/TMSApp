@@ -23,7 +23,7 @@ namespace TMSApp.Views.Tasks
         }
         private async void OnEditClicked(object sender,EventArgs e)
         {
-                await Navigation.PushAsync(new TaskEditPage());
+                //await Navigation.PushAsync(new EditTaskPage());
         }
     }
 

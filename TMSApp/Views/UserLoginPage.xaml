@@ -5,7 +5,7 @@
              BackgroundColor="AliceBlue">
     <ScrollView VerticalOptions="Center" 
                     HorizontalOptions="FillAndExpand">
-        <StackLayout >
+        <StackLayout>
             <Frame Padding="20" Margin="20" CornerRadius="10" BackgroundColor="White" HasShadow="True">
                 <StackLayout Spacing="20">
                     <Label Text="User Login"
@@ -13,9 +13,29 @@
                                HorizontalTextAlignment="Center"
                                FontAttributes="Bold"
                                TextColor="#0989ee"/>
-                    <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email" />
-                    <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="True" />
-                    <Button Text="Login" Clicked="Login_Clicked" BackgroundColor="#0989ee" TextColor="White"/>
+                    <!-- Email Entry with Validation -->
+                    <Entry x:Name="emailEntry" 
+                           Placeholder="Email" 
+                           Keyboard="Email"
+                           Text="{Binding Email, Mode=TwoWay}" />
+                    <Label Text="{Binding EmailError}" 
+                           TextColor="Red" 
+                           IsVisible="{Binding IsEmailErrorVisible}" />
+
+                    <!-- Password Entry with Validation -->
+                    <Entry x:Name="passwordEntry" 
+                           Placeholder="Password" 
+                           IsPassword="True" 
+                           Text="{Binding Password, Mode=TwoWay}" />
+                    <Label Text="{Binding PasswordError}" 
+                           TextColor="Red" 
+                           IsVisible="{Binding IsPasswordErrorVisible}" />
+
+                    <!-- Login Button -->
+                    <Button Text="Login" 
+                            Clicked="Login_Clicked" 
+                            BackgroundColor="#0989ee" 
+                            TextColor="White"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

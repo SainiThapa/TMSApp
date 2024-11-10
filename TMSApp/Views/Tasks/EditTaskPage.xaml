@@ -1,0 +1,27 @@
+﻿    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.Tasks.EditTaskPage"
+             Title="Edit Task">
+
+    <StackLayout Padding="10">
+
+        <!-- Task Title -->
+        <Label Text="Title" FontSize="Medium" />
+        <Entry Text="{Binding Task.Title}" Placeholder="Task Title" />
+
+        <!-- Task Description -->
+        <Label Text="Description" FontSize="Medium" />
+        <Editor Text="{Binding Task.Description}" Placeholder="Task Description" />
+
+        <!-- Task Due Date -->
+        <Label Text="Due Date" FontSize="Medium" />
+        <DatePicker Date="{Binding Task.DueDate}" />
+
+        <!-- Task Status -->
+        <Label Text="Status" FontSize="Medium" />
+        <Switch IsToggled="{Binding Task.IsActive}" />
+
+        <!-- Save Button -->
+        <Button Text="Save" Command="{Binding SaveCommand}" BackgroundColor="#007ACC" TextColor="White" />
+    </StackLayout>
+</ContentPage>

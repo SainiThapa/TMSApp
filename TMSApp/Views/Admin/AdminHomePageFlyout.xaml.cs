@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using TMSApp.ViewModels;
-using TMSApp.Views.Accounts;
 using System.Diagnostics;
 
 namespace TMSApp.Views.Admin

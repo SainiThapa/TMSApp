@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TMSApp.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -29,21 +30,15 @@ namespace TMSApp.Views.User
             var item = e.SelectedItem as UserHomePageFlyoutMenuItem;
             if (item == null)
                 return;
-            if (item.Id == 2)
+            if (item.Id == 0)
             {
-                // Implement logout logic
-                Application.Current.MainPage = new NavigationPage(new MainPage());
-                Navigation.RemovePage(this);
+                Application.Current.MainPage = new UserHomePage();
             }
-            else
+            else if (item.Id == 1)
             {
-                var page = (Page)Activator.CreateInstance(item.TargetType);
-                page.Title = item.Title;
-
-                Detail = new NavigationPage(page);
-                IsPresented = false;
+                SecureStorage.Remove("jwt_token");
+                Application.Current.MainPage = new MainPage();
             }
-            ((ListView)sender).SelectedItem = null;
         }
     }
 }

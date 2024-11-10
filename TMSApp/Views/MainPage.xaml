@@ -17,20 +17,17 @@
                HorizontalOptions="Center"
                FontAttributes="Italic" />
 
-        <Button Text="Login as a User"
+        <Button Text="Login"
                 HorizontalOptions="FillAndExpand"
                 Clicked="LoginUser_Clicked" 
-                BackgroundColor="Aquamarine"/>
-
-        <Button Text="Login as an Admin"
-                HorizontalOptions="FillAndExpand"
-                Clicked="LoginAdmin_Clicked" 
-                BackgroundColor="Coral"/>
+                BackgroundColor="#0933dd"
+                TextColor="White"/>
 
         <Button Text="Register Account"
                 HorizontalOptions="FillAndExpand"
                 Clicked="RegisterAccount_Clicked" 
-                BackgroundColor="GreenYellow"/>
+                BackgroundColor="Green"
+                TextColor="White"/>
 
     </StackLayout>
 </ContentPage>

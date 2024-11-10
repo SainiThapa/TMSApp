@@ -1,0 +1,26 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.Tasks.CreateTaskPage"
+             Title="Create Task">
+
+    <StackLayout Padding="20">
+
+        <Label Text="Title" FontSize="Medium" />
+        <Entry Text="{Binding TaskTitle}" Placeholder="Enter task title" />
+
+        <Label Text="Description" FontSize="Medium" Margin="0,10,0,0" />
+        <Editor Text="{Binding TaskDescription}" Placeholder="Enter task description" HeightRequest="100" />
+
+        <Label Text="Due Date" FontSize="Medium" Margin="0,10,0,0" />
+        <DatePicker Date="{Binding TaskDueDate}" />
+
+        <Label Text="Active" FontSize="Medium" Margin="0,10,0,0" />
+        <Switch IsToggled="{Binding IsActive}"/>
+
+        <Button Text="Save Task"
+                Command="{Binding SaveTaskCommand}"
+                BackgroundColor="#0989ee"
+                TextColor="White"
+                Margin="0,20,0,0" />
+    </StackLayout>
+</ContentPage>

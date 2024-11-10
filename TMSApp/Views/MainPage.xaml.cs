@@ -19,10 +19,6 @@ namespace TMSApp
         {
             await Navigation.PushAsync(new UserLoginPage());
         }
-        private async void LoginAdmin_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AdminLoginPage());
-        }
         private async void RegisterAccount_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegisterAccount());

@@ -1,21 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TMSApp.ViewModels"
              x:Class="TMSApp.Views.RegisterAccount"
-             Title="Register New Account"
-             BackgroundColor="AliceBlue">
-    <ScrollView>
-        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-            <Frame Padding="20" Margin="20" CornerRadius="10" BackgroundColor="White" HasShadow="True">
-                <StackLayout Spacing="20">
-                    <Entry x:Name="firstNameEntry" Placeholder="First Name" />
-                    <Entry x:Name="lastNameEntry" Placeholder="Last Name" />
-                    <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email" />
-                    <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="True" />
-                    <Entry x:Name="confirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True" />
-                    <Button Text="Register" Clicked="Button_Register" BackgroundColor="LightGreen" TextColor="White" />
-                </StackLayout>
-            </Frame>
-        </StackLayout>
-    </ScrollView>
+             Title="User Registration">
+
+    <ContentPage.BindingContext>
+        <local:RegisterViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="20" Spacing="15">
+        <Label Text="User Registration" FontSize="Large" HorizontalOptions="Center" FontAttributes="Bold" />
+
+        <!-- Email Entry -->
+        <Entry Placeholder="Email" Text="{Binding Email}" Keyboard="Email" />
+        <Label Text="{Binding [Email].ErrorMessage}" TextColor="Red" IsVisible="{Binding [Email].HasErrors}" />
+
+        <!-- First Name Entry -->
+        <Entry Placeholder="First Name" Text="{Binding FirstName}" />
+        <Label Text="{Binding [FirstName].ErrorMessage}" TextColor="Red" IsVisible="{Binding [FirstName].HasErrors}" />
+
+        <!-- Last Name Entry -->
+        <Entry Placeholder="Last Name" Text="{Binding LastName}" />
+        <Label Text="{Binding [LastName].ErrorMessage}" TextColor="Red" IsVisible="{Binding [LastName].HasErrors}" />
+
+        <!-- Password Entry -->
+        <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" />
+        <Label Text="{Binding [Password].ErrorMessage}" TextColor="Red" IsVisible="{Binding [Password].HasErrors}" />
+
+        <!-- Confirm Password Entry -->
+        <Entry Placeholder="Confirm Password" Text="{Binding ConfirmPassword}" IsPassword="True" />
+        <Label Text="{Binding [ConfirmPassword].ErrorMessage}" TextColor="Red" IsVisible="{Binding [ConfirmPassword].HasErrors}" />
+
+        <!-- Register Button -->
+        <Button Text="Register" Clicked="OnRegisterClicked" BackgroundColor="#0989ee" TextColor="White" />
+    </StackLayout>
 </ContentPage>
