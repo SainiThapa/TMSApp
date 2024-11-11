@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMSApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,6 +11,7 @@ namespace TMSApp.Views.Tasks
         public CreateTaskPage()
         {
             InitializeComponent();
+            DueDatePicker.MinimumDate = DateTime.Today;
             BindingContext = new CreateTaskViewModel();
         }
     }

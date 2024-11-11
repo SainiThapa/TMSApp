@@ -1,0 +1,57 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.User.ProfilePage"
+             Title="User Profile">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="20" BackgroundColor="#f0f4f8">
+
+            <Frame BackgroundColor="White"
+                   CornerRadius="10"
+                   Padding="20"
+                   HasShadow="True">
+
+                <StackLayout Spacing="15">
+                    <Label Text="User Profile" 
+                           FontAttributes="Bold" 
+                           FontSize="Large" 
+                           HorizontalOptions="Center"
+                           TextColor="#0989ee" />
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Username:" FontAttributes="Bold" TextColor="#333" FontSize="Medium"/>
+                    </StackLayout>
+                        <Label Text="{Binding Username}" TextColor="#555" FontSize="Medium"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="First Name:" FontAttributes="Bold" FontSize="Medium" TextColor="#333" />
+                    </StackLayout>
+                        <Label Text="{Binding FirstName}" TextColor="#555" FontSize="Medium"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Last Name:" FontAttributes="Bold" TextColor="#333" FontSize="Medium"/>
+                    </StackLayout>
+                    <Label Text="{Binding LastName}" TextColor="#555" FontSize="Medium"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Email:" FontAttributes="Bold" TextColor="#333" FontSize="Medium"/>
+                    </StackLayout>
+                    <Label Text="{Binding Email}" TextColor="#555" FontSize="Medium"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Total Tasks:" FontAttributes="Bold" TextColor="#333" FontSize="Medium"/>
+                        <Label Text="{Binding TaskCount}" TextColor="#555" FontSize="Medium"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <Button Text="Back to Home"
+                    Clicked="Button_Clicked"
+                    BackgroundColor="#0989ee"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Padding="10,5"
+                    FontAttributes="Bold" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

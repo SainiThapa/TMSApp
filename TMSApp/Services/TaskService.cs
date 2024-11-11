@@ -18,10 +18,7 @@ namespace TMSApp.Services
 
         public TaskService()
         {
-            var httpClientHandler = new HttpClientHandler();
-            var authHandler = new AuthHandler { InnerHandler = httpClientHandler };
-
-            _httpClient = new HttpClient(authHandler)
+            _httpClient = new HttpClient()
             {
                 BaseAddress = new Uri("http://192.168.18.8:5000/api/")
             };

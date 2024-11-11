@@ -17,8 +17,10 @@ namespace TMSApp.ViewModels
         {
             MenuItems = new ObservableCollection<UserHomePageFlyoutMenuItem>(new[]
         {
-        new UserHomePageFlyoutMenuItem(typeof(UserHomePage),0,"To Do List"),
-        new UserHomePageFlyoutMenuItem(typeof(MainPage), 1, "Logout"),
+        new UserHomePageFlyoutMenuItem(typeof(ProfilePage), 0, "My Profile"),
+        new UserHomePageFlyoutMenuItem(typeof(UserHomePage),1,"To Do List"),
+        new UserHomePageFlyoutMenuItem(typeof(MainPage), 2, "Logout"),
+
     });
         }
     }

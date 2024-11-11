@@ -32,9 +32,13 @@ namespace TMSApp.Views.User
                 return;
             if (item.Id == 0)
             {
-                Application.Current.MainPage = new UserHomePage();
+                Application.Current.MainPage = new ProfilePage();
             }
             else if (item.Id == 1)
+            {
+                Application.Current.MainPage = new UserHomePage();
+            }
+            else if (item.Id == 2)
             {
                 SecureStorage.Remove("jwt_token");
                 Application.Current.MainPage = new MainPage();

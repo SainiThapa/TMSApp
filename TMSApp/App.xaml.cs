@@ -3,7 +3,6 @@ using TMSApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using TMSApp.Views.User;
-using TMSApp.Views.Admin;
 using TMSApp.Views.Tasks;
 
 

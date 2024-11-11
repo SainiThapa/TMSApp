@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using TMSApp.ViewModels;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 using Xamarin.Forms; // Add Xamarin.Essentials for SecureStorage
@@ -15,10 +16,8 @@ public class AuthService
         
         public AuthService()
         {
-            var httpClientHandler = new HttpClientHandler();
-            var authHandler = new AuthHandler { InnerHandler = httpClientHandler };
 
-            _httpClient = new HttpClient(authHandler)
+            _httpClient = new HttpClient()
             {
                 BaseAddress = new Uri("http://192.168.18.8:5000/api/")
             };
@@ -159,7 +158,45 @@ public class AuthService
                 Console.WriteLine("Logout failed.");
             }
         }
+        public async Task<UserProfileViewModel> GetUserProfileAsync()
+        {
+            try
+            {
+                var token = await SecureStorage.GetAsync("jwt_token");
+                var profileUrl = "AccountApi/Profile";
 
+                if (string.IsNullOrEmpty(token))
+                    throw new UnauthorizedAccessException("User is not authenticated.");
+                var request = new HttpRequestMessage(HttpMethod.Get, profileUrl);
+
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                try
+                {
+                    var response = await _httpClient.SendAsync(request);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine($"Error retrieving profile: {response.StatusCode}");
+                        return null;
+                    }
+
+                    var responseBody = await response.Content.ReadAsStringAsync();
+
+                    var profile = JsonConvert.DeserializeObject<UserProfileViewModel>(responseBody);
+                    return profile;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception ===========: {ex.Message}");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return null;
+            }
+        }
 
     }
 

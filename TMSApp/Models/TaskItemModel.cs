@@ -7,7 +7,7 @@ namespace TMSApp.Models
 {
     public class TaskItemModel
     {
-        public int Id { get; set; } // Primary Key
+        public int Id { get; set; } 
 
         [Required]
         [StringLength(100)]
@@ -20,7 +20,7 @@ namespace TMSApp.Models
         public DateTime DueDate { get; set; }
 
         [Required]
-        public bool IsActive { get; set; } // true for active, false for completed/inactive
+        public bool IsActive { get; set; }
 
         public string UserId { get; set; }
 
