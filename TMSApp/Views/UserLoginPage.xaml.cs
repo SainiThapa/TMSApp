@@ -41,5 +41,11 @@ namespace TMSApp.Views
                 await DisplayAlert("Validation Error", "Please fix the errors before logging in.", "OK");
             }
         }
+        protected override bool OnBackButtonPressed()
+        {
+            Navigation.PopAsync();
+            return true; 
+        }
+
     }
 }

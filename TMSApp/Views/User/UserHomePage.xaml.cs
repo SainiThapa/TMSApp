@@ -32,7 +32,7 @@ namespace TMSApp.Views.User
                 return;
             if (item.Id == 0)
             {
-                Application.Current.MainPage = new ProfilePage();
+                Application.Current.MainPage = new NavigationPage(new ProfilePage());
             }
             else if (item.Id == 1)
             {
@@ -41,7 +41,7 @@ namespace TMSApp.Views.User
             else if (item.Id == 2)
             {
                 SecureStorage.Remove("jwt_token");
-                Application.Current.MainPage = new MainPage();
+                Application.Current.MainPage = new NavigationPage(new MainPage());
             }
         }
     }

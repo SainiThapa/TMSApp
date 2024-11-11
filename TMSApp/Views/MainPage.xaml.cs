@@ -17,10 +17,13 @@ namespace TMSApp
         }
         private async void LoginUser_Clicked(object sender, EventArgs e)
         {
+            //Application.Current.MainPage = new NavigationPage(new UserLoginPage());
             await Navigation.PushAsync(new UserLoginPage());
+
         }
         private async void RegisterAccount_Clicked(object sender, EventArgs e)
         {
+            //Application.Current.MainPage = new NavigationPage(new RegisterAccount());
             await Navigation.PushAsync(new RegisterAccount());
         }
 

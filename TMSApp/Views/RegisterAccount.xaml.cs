@@ -40,7 +40,7 @@ namespace TMSApp.Views
                 if (response)
                 {
                     await this.DisplayToastAsync("Login Successful", 1000);
-                    Application.Current.MainPage = new UserHomePage();
+                    Application.Current.MainPage = new NavigationPage(new UserHomePage());
                 }
             }
             else
@@ -48,5 +48,11 @@ namespace TMSApp.Views
                 await DisplayAlert("Error", "Registration failed. Please try again.", "OK");
             }
         }
+        protected override bool OnBackButtonPressed()
+        {
+            Navigation.PopAsync();
+            return true;
+        }
+
     }
 }
