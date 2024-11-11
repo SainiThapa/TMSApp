@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TMSApp.Models;
+using TMSApp.Views.User;
 using TMSApp.Services;
 using Xamarin.Forms;
 
@@ -28,7 +29,14 @@ namespace TMSApp.ViewModels
             if (isSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert("Success", "Task updated successfully!", "OK");
-                await Application.Current.MainPage.Navigation.PopAsync();
+                try
+                {
+                    Application.Current.MainPage = new UserHomePage();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("\n\n==========Exception======="+ e.Message);
+                }
             }
             else
             {

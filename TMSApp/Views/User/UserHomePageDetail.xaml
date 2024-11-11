@@ -3,8 +3,6 @@
              x:Class="TMSApp.Views.User.UserHomePageDetail"
              Title="Tasks">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add"
-                     Command="{Binding AddTaskCommand}" />
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="10">
@@ -13,8 +11,10 @@
                HorizontalOptions="Center"
                FontAttributes="Bold"
                Margin="0,10,0,10" />
+        <Button Text="Add Task" Clicked="Button_Clicked"/>
 
-        <ListView ItemsSource="{Binding Tasks}"
+        <ListView x:Name="TasksListView"
+                  ItemsSource="{Binding Tasks}"
                   HasUnevenRows="True"
                   SeparatorVisibility="Default"
                   Margin="0,10,0,0">

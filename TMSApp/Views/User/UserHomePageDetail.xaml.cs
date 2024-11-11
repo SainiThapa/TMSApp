@@ -15,20 +15,18 @@ namespace TMSApp.Views.User
         public ObservableCollection<TaskViewModel> Tasks { get; set; }
         public int TaskCount => Tasks?.Count ?? 0;
 
-        public Command AddTaskCommand { get; }
         public Command<TaskViewModel> EditTaskCommand { get; }
         public Command<TaskViewModel> DeleteTaskCommand { get; }
+        private bool _isNavigating = false;
+
         public UserHomePageDetail()
         {
             InitializeComponent();
 
-            // Initialize TaskService and ObservableCollection
             _taskService = new TaskService();
             Tasks = new ObservableCollection<TaskViewModel>();
 
-            // Set BindingContext for XAML data binding
             BindingContext = this;
-            AddTaskCommand = new Command(async () => await AddTaskCommand_Executed());
             EditTaskCommand = new Command<TaskViewModel>(async (task) => await EditTaskCommand_Executed(task));
             DeleteTaskCommand = new Command<TaskViewModel>(async (task) => await DeleteTaskCommand_Executed(task));
 
@@ -63,12 +61,6 @@ namespace TMSApp.Views.User
                 await DisplayAlert("Error", "An error occurred while loading tasks.", "OK");
             }
         }
-
-
-        private async Task AddTaskCommand_Executed()
-        {
-            await Navigation.PushAsync(new CreateTaskPage());
-        }
         private async Task EditTaskCommand_Executed(TaskViewModel task)
         {
             await Navigation.PushAsync(new EditTaskPage(task));
@@ -82,6 +74,7 @@ namespace TMSApp.Views.User
                 var result = await _taskService.DeleteTaskAsync(task.Id);
                 if (result)
                 {
+                    await DisplayAlert("Deleted", "Task Deleted Succesfully", "OK");
                     Tasks.Remove(task);
                     OnPropertyChanged(nameof(TaskCount));
                 }
@@ -90,6 +83,7 @@ namespace TMSApp.Views.User
                     await DisplayAlert("Error", "Failed to delete the task.", "OK");
                 }
             }
+            Console.WriteLine("DENIEDD................");
         }
 
         // Refresh tasks when the page appears
@@ -97,6 +91,26 @@ namespace TMSApp.Views.User
         {
             base.OnAppearing();
             await LoadTasksAsync();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            if (_isNavigating) return;
+
+            try
+            {
+                _isNavigating = true;
+                Navigation.PushAsync(new CreateTaskPage());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Navigation error: {ex.Message}");
+                DisplayAlert("Error", "Unable to open the Add Task page.", "OK");
+            }
+            finally
+            {
+                _isNavigating = false;
+            }
         }
     }
 }

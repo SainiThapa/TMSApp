@@ -127,7 +127,7 @@ namespace TMSApp.Services
         public async Task<bool> DeleteTaskAsync(int taskId)
         {
             var token = await GetTokenAsync();
-            var request = new HttpRequestMessage(HttpMethod.Delete, $"http://192.162.18.8:5000/api/TaskItem/Delete/{taskId}");
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"http://192.168.18.8:5000/api/TaskItem/Delete/{taskId}");
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             var response = await _httpClient.SendAsync(request);
