@@ -3,6 +3,7 @@ using TMSApp.ViewModels;
 using Xamarin.Forms;
 using TMSApp.Services;
 using TMSApp.Views.User;
+
 using Xamarin.CommunityToolkit.Extensions;
 
 namespace TMSApp.Views
@@ -47,5 +48,9 @@ namespace TMSApp.Views
             return true; 
         }
 
+        private async void OnAdminLoginTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AdminLoginPage());
+        }
     }
 }

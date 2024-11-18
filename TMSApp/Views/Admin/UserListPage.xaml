@@ -1,0 +1,27 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.Admin.UserListPage"
+             Title="User List">
+    <StackLayout Padding="10">
+        <Label Text="User List" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <ListView ItemsSource="{Binding Users}"
+          IsPullToRefreshEnabled="True"
+          RefreshCommand="{Binding LoadUsersCommand}"
+          IsRefreshing="{Binding IsBusy}"
+          HasUnevenRows="True"
+          ItemTapped="OnUserTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Email}" FontSize="16" FontAttributes="Bold" />
+                            <Label Text="{Binding FirstName}" FontSize="14" />
+                            <Label Text="{Binding LastName}" FontSize="14" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

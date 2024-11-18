@@ -5,22 +5,27 @@ using TMSApp.Models;
 using TMSApp.Views.User;
 using TMSApp.Services;
 using Xamarin.Forms;
+using TMSApp.Views.Admin;
+using Xamarin.Essentials;
 
 namespace TMSApp.ViewModels
 {
     public class EditTaskViewModel : BaseViewModel
     {
         private readonly TaskService _taskService;
+        private readonly INavigation _navigation;
+
         public TaskViewModel Task { get; set; }
 
         public ICommand SaveCommand { get; }
 
-        public EditTaskViewModel(TaskViewModel task)
+        public EditTaskViewModel(TaskViewModel task, INavigation navigation)
         {
             Task = task;
             _taskService = new TaskService();
 
             SaveCommand = new Command(async () => await SaveTaskAsync());
+            _navigation = navigation;
         }
 
         private async Task SaveTaskAsync()
@@ -31,7 +36,9 @@ namespace TMSApp.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Success", "Task updated successfully!", "OK");
                 try
                 {
-                    Application.Current.MainPage = new UserHomePage();
+                    await _navigation.PopAsync();
+
+                    //Application.Current.MainPage = new UserHomePage();
                 }
                 catch (Exception e)
                 {

@@ -1,0 +1,57 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.Admin.AdminHomePageDetail"
+             Title="Tasks">
+    <ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="10">
+        <Label Text="{Binding TaskCount, StringFormat='Total Tasks: {0}'}"
+               FontSize="Medium" 
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               Margin="0,10,0,10" />
+        <Button Text="Add Task" Clicked="Button_Clicked"/>
+
+        <ListView x:Name="TasksListView"
+                  ItemsSource="{Binding Tasks}"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="Default"
+                  Margin="0,10,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame BorderColor="LightGray" CornerRadius="5" Padding="10" Margin="5">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Title}" FontSize="Medium" FontAttributes="Bold" />
+                                    <Label Text="{Binding DueDate, StringFormat='Due: {0:MM/dd/yyyy}'}"
+                                           FontSize="Small"
+                                           HorizontalOptions="EndAndExpand"
+                                           TextColor="Gray" />
+                                </StackLayout>
+
+                                <Label Text="{Binding Description}" 
+                                       FontSize="Small" 
+                                       TextColor="Gray"
+                                       LineBreakMode="WordWrap" />
+                                <Label Text="{Binding Status}"/>
+
+                                <!-- Edit and Delete Buttons -->
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="10">
+                                    <Button Text="Edit" 
+                                            Command="{Binding BindingContext.EditTaskCommand, Source={x:Reference Name=TasksListView}}" 
+                                            CommandParameter="{Binding .}" />
+
+                                    <Button Text="Delete" 
+                                            Command="{Binding BindingContext.DeleteTaskCommand, Source={x:Reference Name=TasksListView}}" 
+                                            CommandParameter="{Binding .}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

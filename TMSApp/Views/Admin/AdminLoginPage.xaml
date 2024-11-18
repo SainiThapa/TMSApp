@@ -1,18 +1,18 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TMSApp.Views.UserLoginPage"
-             Title="User Login"
-             BackgroundColor="AliceBlue">
+             x:Class="TMSApp.Views.AdminLoginPage"
+             Title="Admin Login"
+             BackgroundColor="Gray">
     <ScrollView VerticalOptions="Center" 
                     HorizontalOptions="FillAndExpand">
         <StackLayout>
             <Frame Padding="20" Margin="20" CornerRadius="10" BackgroundColor="White" HasShadow="True">
                 <StackLayout Spacing="20">
-                    <Label Text="User Login"
-                               FontSize="Large"
+                    <Label Text="Admin Login"
+                               FontSize="24"
                                HorizontalTextAlignment="Center"
                                FontAttributes="Bold"
-                               TextColor="#0989ee"/>
+                               TextColor="Black"/>
                     <!-- Email Entry with Validation -->
                     <Entry x:Name="emailEntry" 
                            Placeholder="Email" 
@@ -34,26 +34,10 @@
                     <!-- Login Button -->
                     <Button Text="Login" 
                             Clicked="Login_Clicked" 
-                            BackgroundColor="#0989ee" 
+                            BackgroundColor="#000" 
                             TextColor="White"/>
                 </StackLayout>
             </Frame>
-            <StackLayout>
-                <Label Text="or" HorizontalOptions="Center" />
-
-                <Label HorizontalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text=" " />
-                            <Span Text="Login as Admin" TextColor="Blue">
-                                <Span.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnAdminLoginTapped" />
-                                </Span.GestureRecognizers>
-                            </Span>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

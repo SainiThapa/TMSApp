@@ -1,0 +1,30 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.Admin.ReportSummaryPage"
+             Title="Reports and Summaries">
+    <StackLayout Padding="20">
+        <Label Text="Report and Summary" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+            
+        <Button Text="Download User Summary"
+                Background="#0988FF"
+                TextColor="White"
+                Command="{Binding DownloadUserSummaryCommand}" />
+        <Button Text="Open User Summary"
+                Command="{Binding OpenFileCommand}"
+                Background="#0988FF"
+                TextColor="White"
+                CommandParameter="{Binding UserSummaryFilePath}" />
+            
+        <Button Text="Download Task Report"
+                Background="#00dd66"
+                TextColor="White"
+                Command="{Binding DownloadTaskReportCommand}" />
+        <Button Text="Open Task Report"
+                Command="{Binding OpenFileCommand}"
+                Background="#00dd66"
+                TextColor="White"
+                CommandParameter="{Binding TaskReportFilePath}" />
+     <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+    </StackLayout>
+
+</ContentPage>

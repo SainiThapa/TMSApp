@@ -1,0 +1,42 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMSApp.Views.Admin.UserDetailsPage"
+             Title="User Details">
+    <StackLayout Padding="20">
+        <!-- User Details -->
+        <Label Text="{Binding FirstName}" FontSize="24" FontAttributes="Bold" />
+        <Label Text="{Binding LastName}" FontSize="18" />
+        <Label Text="{Binding Email}" FontSize="18" />
+
+        <!-- Tasks Section -->
+        <Label Text="Tasks" FontSize="20" FontAttributes="Bold" Margin="0,20,0,0" />
+        <Button Text="Delete Selected Tasks"
+                Command="{Binding DeleteSelectedTasksCommand}"
+                BackgroundColor="Red"
+                TextColor="White" />
+
+        <ListView ItemsSource="{Binding Tasks}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <CheckBox IsChecked="{Binding IsSelected}"
+                                      CheckedChanged="OnTaskSelected"/>
+                            <StackLayout>
+                                <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold" />
+                                <Label Text="{Binding Description}" FontSize="14" />
+                                <Label Text="{Binding DueDate}" FontSize="14" TextColor="Gray" />
+                                <Label Text="{Binding IsActive}" FontSize="14" TextColor="Green" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Reset Password"
+                Command="{Binding ResetPasswordCommand}"
+                BackgroundColor="Blue"
+                TextColor="White"
+                Margin="0,20,0,0" />
+    </StackLayout>
+</ContentPage>

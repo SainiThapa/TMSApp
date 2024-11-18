@@ -12,7 +12,7 @@ namespace TMSApp.Views.Tasks
             InitializeComponent();
             DueDatePicker.MinimumDate = DateTime.Today;
 
-            BindingContext = new EditTaskViewModel(task);
+            BindingContext = new EditTaskViewModel(task, Navigation);
         }
     }
 }

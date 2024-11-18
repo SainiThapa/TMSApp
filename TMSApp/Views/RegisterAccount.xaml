@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TMSApp.ViewModels"
              x:Class="TMSApp.Views.RegisterAccount"
-             Title="User Registration">
+             Title="User Registration"
+             BackgroundColor="AliceBlue">
 
     <ContentPage.BindingContext>
         <local:RegisterViewModel />
@@ -33,6 +34,6 @@
         <Label Text="{Binding [ConfirmPassword].ErrorMessage}" TextColor="Red" IsVisible="{Binding [ConfirmPassword].HasErrors}" />
 
         <!-- Register Button -->
-        <Button Text="Register" Clicked="OnRegisterClicked" BackgroundColor="#0989ee" TextColor="White" />
+        <Button Text="Register" Clicked="OnRegisterClicked" BackgroundColor="green" TextColor="White" />
     </StackLayout>
 </ContentPage>
