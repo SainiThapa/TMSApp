@@ -73,6 +73,7 @@ namespace TMSApp.ViewModels.Admin
                 {
                     var filePath = SaveFileLocally("UserSummary.csv", fileData);
                     await Application.Current.MainPage.DisplayAlert("Success", $"User Summary downloaded to {filePath}", "OK");
+                    await OpenFileAsync(filePath);
                 }
                 else
                 {
@@ -100,6 +101,7 @@ namespace TMSApp.ViewModels.Admin
                 {
                     var filePath = SaveFileLocally("TaskReport.csv", fileData);
                     await Application.Current.MainPage.DisplayAlert("Success", $"Task Report downloaded to {filePath}", "OK");
+                    await OpenFileAsync(filePath);
                 }
                 else
                 {
@@ -134,21 +136,6 @@ namespace TMSApp.ViewModels.Admin
 
             File.WriteAllBytes(filePath, fileData);
             return filePath;
-        }
-
-        private async Task OpenFileAsync(string filePath)
-        {
-            try
-            {
-                await Launcher.OpenAsync(new OpenFileRequest
-                {
-                    File = new ReadOnlyFile(filePath)
-                });
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Unable to open file: {ex.Message}", "OK");
-            }
         }
     }
 }
