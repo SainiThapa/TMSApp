@@ -1,30 +1,62 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TMSApp.Views.Admin.ReportSummaryPage"
-             Title="Reports and Summaries">
-    <StackLayout Padding="20">
-        <Label Text="Report and Summary" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
-            
-        <Button Text="Download User Summary"
-                Background="#0988FF"
-                TextColor="White"
-                Command="{Binding DownloadUserSummaryCommand}" />
-        <Button Text="Open User Summary"
-                Command="{Binding OpenFileCommand}"
-                Background="#0988FF"
-                TextColor="White"
-                CommandParameter="{Binding UserSummaryFilePath}" />
-            
-        <Button Text="Download Task Report"
-                Background="#00dd66"
-                TextColor="White"
-                Command="{Binding DownloadTaskReportCommand}" />
-        <Button Text="Open Task Report"
-                Command="{Binding OpenFileCommand}"
-                Background="#00dd66"
-                TextColor="White"
-                CommandParameter="{Binding TaskReportFilePath}" />
-     <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
-    </StackLayout>
+             Title="Reports and Summaries"
+             BackgroundColor="#F5F5F5">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
 
+            <!-- Page Title -->
+            <Label Text="Reports and Summaries"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#333"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,20" />
+
+            <!-- User Summary Section -->
+            <Frame Padding="15" CornerRadius="10" BackgroundColor="White" HasShadow="True">
+                <StackLayout Spacing="10">
+                    <Label Text="User Summary"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#555" />
+                    <Label Text="Download a detailed summary of all users and their task counts."
+                           FontSize="14"
+                           TextColor="#888" />
+                    <Button Text="Download User Summary"
+                            BackgroundColor="#0988FF"
+                            TextColor="White"
+                            CornerRadius="5"
+                            Command="{Binding DownloadUserSummaryCommand}" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Task Report Section -->
+            <Frame Padding="15" CornerRadius="10" BackgroundColor="White" HasShadow="True">
+                <StackLayout Spacing="10">
+                    <Label Text="Task Report"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#555" />
+                    <Label Text="Download a detailed report of all tasks and their respective creators."
+                           FontSize="14"
+                           TextColor="#888" />
+                    <Button Text="Download Task Report"
+                            BackgroundColor="#00dd66"
+                            TextColor="White"
+                            CornerRadius="5"
+                            Command="{Binding DownloadTaskReportCommand}" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Activity Indicator -->
+            <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                               IsVisible="{Binding IsBusy}" 
+                               Color="#0988FF" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" 
+                               Margin="10" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
